@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TracingNetCore.Entities", "TracingNetCore.Entities\TracingNetCore.Entities.csproj", "{EB487417-03D3-40ED-BC74-E70004A240ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TracingNetCore.Core", "TracingNetCore.Core\TracingNetCore.Core.csproj", "{A66DAEAD-9A68-4BF4-ACBB-27535EA8C415}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TacingNetCore.DataAccess", "TacingNetCore.DataAccess\TacingNetCore.DataAccess.csproj", "{7DD6B87F-BC6E-4AF2-9219-F86FF06A8D6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TracingNetCore.Business", "TracingNetCore.Business\TracingNetCore.Business.csproj", "{A6EC341E-B577-413C-960C-DB74D551138A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TracinNetCore.WebApi", "TracinNetCore.WebApi\TracinNetCore.WebApi.csproj", "{B53F689D-0C5B-49D2-A46F-A3465DDFB1EB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB487417-03D3-40ED-BC74-E70004A240ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB487417-03D3-40ED-BC74-E70004A240ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB487417-03D3-40ED-BC74-E70004A240ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB487417-03D3-40ED-BC74-E70004A240ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A66DAEAD-9A68-4BF4-ACBB-27535EA8C415}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A66DAEAD-9A68-4BF4-ACBB-27535EA8C415}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A66DAEAD-9A68-4BF4-ACBB-27535EA8C415}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A66DAEAD-9A68-4BF4-ACBB-27535EA8C415}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DD6B87F-BC6E-4AF2-9219-F86FF06A8D6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DD6B87F-BC6E-4AF2-9219-F86FF06A8D6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DD6B87F-BC6E-4AF2-9219-F86FF06A8D6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DD6B87F-BC6E-4AF2-9219-F86FF06A8D6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6EC341E-B577-413C-960C-DB74D551138A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6EC341E-B577-413C-960C-DB74D551138A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6EC341E-B577-413C-960C-DB74D551138A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6EC341E-B577-413C-960C-DB74D551138A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B53F689D-0C5B-49D2-A46F-A3465DDFB1EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B53F689D-0C5B-49D2-A46F-A3465DDFB1EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B53F689D-0C5B-49D2-A46F-A3465DDFB1EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B53F689D-0C5B-49D2-A46F-A3465DDFB1EB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CCD9DCAD-6750-48D4-B979-C4491CDDEE53}
+	EndGlobalSection
+EndGlobal
