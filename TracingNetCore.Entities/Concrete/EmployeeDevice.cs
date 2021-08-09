@@ -6,9 +6,7 @@ namespace TracingNetCore.Entities.Concrete
     {
         public string DeviceIdentity { get; set; }
         public string DeviceName { get; set; }
-
         public int EmployeeId { get; set; }
-
         public int DeviceId { get; set; }
     }
 }
