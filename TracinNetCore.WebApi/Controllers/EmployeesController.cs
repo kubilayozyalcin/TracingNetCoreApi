@@ -35,6 +35,26 @@ namespace TracinNetCore.WebApi.Controllers
             return BadRequest(result.Message);
         }
 
+        // Get List Employee Devices By EmployeeId
+        [HttpGet("getemployeedevices")]
+        public IActionResult GetListEmployeeDevice(int employeeId)
+        {
+            var result = employeeService.GetEmployeeDevices(employeeId);
+            if (result.Success)
+                return Ok(result.Data);
+            return BadRequest(result.Message);
+        }
+
+        // Get List Requests By EmployeeId
+        [HttpGet("getrequests")]
+        public IActionResult GetListRequest(int employeeId)
+        {
+            var result = employeeService.GetRequests(employeeId);
+            if (result.Success)
+                return Ok(result.Data);
+            return BadRequest(result.Message);
+        }
+
         // Add New Employee
         [HttpPost("add")]
         public IActionResult Add(Employee employee)

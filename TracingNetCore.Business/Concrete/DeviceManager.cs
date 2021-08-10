@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TacingNetCore.DataAccess.Abstractions;
 using TracingNetCore.Business.Abstractions;
@@ -11,10 +12,12 @@ namespace TracingNetCore.Business.Concrete
     public class DeviceManager : IDeviceService
     {
         private IDeviceDal deviceDal;
+        private IRequestDal requestDal;
 
-        public DeviceManager(IDeviceDal deviceDal)
+        public DeviceManager(IDeviceDal deviceDal, IRequestDal requestDal)
         {
             this.deviceDal = deviceDal;
+            this.requestDal = requestDal;
         }
 
         public IResult Add(Device device)
@@ -43,7 +46,7 @@ namespace TracingNetCore.Business.Concrete
         public IDataResult<List<Device>> GetByRegionId(int regionId)
         {
             return new SuccessDataResult<List<Device>>(deviceDal.GetList(x => x.RegionId == regionId).ToList());
-                
+
         }
 
         public IDataResult<List<Device>> GetByTypeId(int typeId)
@@ -56,6 +59,9 @@ namespace TracingNetCore.Business.Concrete
             return new SuccessDataResult<List<Device>>(deviceDal.GetList().ToList());
         }
 
-
+        public IDataResult<List<Request>> GetRequests(int employeeId)
+        {
+            return new SuccessDataResult<List<Request>>(requestDal.GetList(x => x.EmployeeId == employeeId).ToList());
+        }
     }
 }
