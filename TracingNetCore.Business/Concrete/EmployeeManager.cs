@@ -11,10 +11,14 @@ namespace TracingNetCore.Business.Concrete
     public class EmployeeManager : IEmployeeService
     {
         private IEmployeeDal employeeDal;
+        private IEmployeeDeviceDal employeeDeviceDal;
+        private IRequestDal requestDal;
 
-        public EmployeeManager(IEmployeeDal employeeDal)
+        public EmployeeManager(IEmployeeDal employeeDal, IEmployeeDeviceDal employeeDeviceDal, IRequestDal requestDal)
         {
             this.employeeDal = employeeDal;
+            this.employeeDeviceDal = employeeDeviceDal;
+            this.requestDal = requestDal;
         }
 
         public IResult Add(Employee employee)
@@ -44,6 +48,17 @@ namespace TracingNetCore.Business.Concrete
         {
             return new SuccessDataResult<List<Employee>>(employeeDal.GetList().ToList());
         }
- 
+
+        public IDataResult<List<EmployeeDevice>> GetEmployeeDevices(int employeeId)
+        {
+            return new SuccessDataResult<List<EmployeeDevice>>(employeeDeviceDal.GetList(x => x.EmployeeId == employeeId).ToList());
+        }
+
+
+        public IDataResult<List<Request>> GetRequests(int employeeId)
+        {
+            return new SuccessDataResult<List<Request>>(requestDal.GetList(x => x.EmployeeId == employeeId).ToList());
+        }
+
     }
 }

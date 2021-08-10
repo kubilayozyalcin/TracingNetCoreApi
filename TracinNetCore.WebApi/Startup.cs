@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,6 +12,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TracingNetCore.Core.Utilities.Security.Encryption;
+using TracingNetCore.Core.Utilities.Security.Jwt;
 
 namespace TracinNetCore.WebApi
 {
@@ -28,6 +31,35 @@ namespace TracinNetCore.WebApi
         {
 
             services.AddControllers();
+
+            //Add Cors AllowOrigin Localhost
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowOrigin",
+                    builder => builder.WithOrigins("http:localhost:3000"));
+
+
+            });
+
+            var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options => {
+
+                    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidIssuer = tokenOptions.Issuer,
+                        ValidAudience = tokenOptions.Audience,
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
+                    };
+                });
+
+            
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TracinNetCore.WebApi", Version = "v1" });
@@ -44,11 +76,17 @@ namespace TracinNetCore.WebApi
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TracinNetCore.WebApi v1"));
             }
 
+            // Cors For Localhost Allow Any Header
+            app.UseCors(builder => builder.WithOrigins("http://localhost:3000").AllowAnyHeader());
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            //Add Auth
+            app.UseAuthentication();
+
+            app.UseAuthorization();         
 
             app.UseEndpoints(endpoints =>
             {
