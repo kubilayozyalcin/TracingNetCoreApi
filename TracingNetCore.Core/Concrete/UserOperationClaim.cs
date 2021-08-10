@@ -6,5 +6,6 @@ namespace TracingNetCore.Core.Concrete
     {
         public int OperationClaimId { get; set; }
         public int UserId { get; set; }
+        public int EmployeeId { get; set; }
     }
 }

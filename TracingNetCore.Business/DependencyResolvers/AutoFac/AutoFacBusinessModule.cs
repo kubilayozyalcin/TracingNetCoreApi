@@ -3,6 +3,7 @@ using TacingNetCore.DataAccess.Abstractions;
 using TacingNetCore.DataAccess.Concrete.EntityFramework;
 using TracingNetCore.Business.Abstractions;
 using TracingNetCore.Business.Concrete;
+using TracingNetCore.Core.Utilities.Security.Jwt;
 
 namespace TracingNetCore.Business.DependencyResolvers.AutoFac
 {
@@ -24,6 +25,9 @@ namespace TracingNetCore.Business.DependencyResolvers.AutoFac
 
             builder.RegisterType<UserManager>().As<IUserService>();
             builder.RegisterType<EFUser>().As<IUserDal>();
+
+            builder.RegisterType<AuthManager>().As<IAuthService>();
+            builder.RegisterType<JsonWebTokenHelper>().As<ITokenHelper>();
         }
     }
 }

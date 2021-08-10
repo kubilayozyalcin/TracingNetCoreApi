@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TracingNetCore.Business.Abstractions;
 using TracingNetCore.Entities.Concrete;
 
@@ -17,6 +18,7 @@ namespace TracinNetCore.WebApi.Controllers
 
         // Get All Devices
         [HttpGet("getall")]
+        [Authorize()]
         public IActionResult GetList()
         {
            var result = deviceService.GetList();

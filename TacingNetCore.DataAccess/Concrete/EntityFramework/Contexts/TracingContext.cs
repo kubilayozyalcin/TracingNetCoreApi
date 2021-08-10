@@ -22,7 +22,7 @@ namespace TacingNetCore.DataAccess.Concrete.EntityFramework.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(connectionString: @"Server=Bigroup;Database=ApiTracing;Trusted_Connection=True");
+            optionsBuilder.UseSqlServer(connectionString: @"Server=Bigroup;Database=ApiXTracing;Trusted_Connection=True");
         }
 
     }
