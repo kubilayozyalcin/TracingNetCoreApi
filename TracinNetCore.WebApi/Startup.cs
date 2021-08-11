@@ -39,7 +39,7 @@ namespace TracinNetCore.WebApi
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowOrigin",
-                    builder => builder.WithOrigins("http:localhost:3000"));
+                    builder => builder.WithOrigins("http://localhost:3000"));
 
 
             });

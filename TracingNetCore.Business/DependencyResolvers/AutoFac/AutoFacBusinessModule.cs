@@ -17,6 +17,15 @@ namespace TracingNetCore.Business.DependencyResolvers.AutoFac
             builder.RegisterType<DeviceManager>().As<IDeviceService>();
             builder.RegisterType<EFDevice>().As<IDeviceDal>();
 
+            builder.RegisterType<RegionManager>().As<IRegionService>();
+            builder.RegisterType<EFRegion>().As<IRegionDal>();
+
+            builder.RegisterType<AlarmManager>().As<IAlarmService>();
+            builder.RegisterType<EFAlarm>().As<IAlarmDal>();
+
+            builder.RegisterType<DeviceTypeManager>().As<IDeviceTypeService>();
+            builder.RegisterType<EFDeviceType>().As<IDeviceTypeDal>();
+
             builder.RegisterType<RequestManager>().As<IRequestService>();
             builder.RegisterType<EFRequest>().As<IRequestDal>();
 
