@@ -1,8 +1,11 @@
 ﻿using Autofac;
+using Autofac.Extras.DynamicProxy;
+using Castle.DynamicProxy;
 using TacingNetCore.DataAccess.Abstractions;
 using TacingNetCore.DataAccess.Concrete.EntityFramework;
 using TracingNetCore.Business.Abstractions;
 using TracingNetCore.Business.Concrete;
+using TracingNetCore.Core.Utilities.Interceptors;
 using TracingNetCore.Core.Utilities.Security.Jwt;
 
 namespace TracingNetCore.Business.DependencyResolvers.AutoFac
@@ -28,6 +31,18 @@ namespace TracingNetCore.Business.DependencyResolvers.AutoFac
 
             builder.RegisterType<AuthManager>().As<IAuthService>();
             builder.RegisterType<JsonWebTokenHelper>().As<ITokenHelper>();
+
+
+            // Autofac Fluent Validation 
+
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+
+            builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()
+                .EnableInterfaceInterceptors(new ProxyGenerationOptions() { 
+                
+                Selector = new AspectInterceptorSelector()
+                
+                }).SingleInstance();
         }
     }
 }

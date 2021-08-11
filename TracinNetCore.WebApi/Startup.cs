@@ -12,6 +12,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TracingNetCore.Core.DependencyResolvers;
+using TracingNetCore.Core.Extensions;
+using TracingNetCore.Core.Utilities.IoC;
 using TracingNetCore.Core.Utilities.Security.Encryption;
 using TracingNetCore.Core.Utilities.Security.Jwt;
 
@@ -58,7 +61,11 @@ namespace TracinNetCore.WebApi
                     };
                 });
 
+            services.AddDependencyResolvers(new ICoreModule[] { 
             
+                new CoreModule(),
+            
+            });
 
             services.AddSwaggerGen(c =>
             {
