@@ -4,6 +4,11 @@ using System.Linq;
 using TacingNetCore.DataAccess.Abstractions;
 using TracingNetCore.Business.Abstractions;
 using TracingNetCore.Business.Constants;
+using TracingNetCore.Business.ValidationRules.FluentValidation;
+using TracingNetCore.Core.Aspects.AutoFac.Caching;
+using TracingNetCore.Core.Aspects.AutoFac.Transaction;
+using TracingNetCore.Core.Aspects.AutoFac.Validation;
+using TracingNetCore.Core.CrossCuttingConcerns.Validation.FluentValidation;
 using TracingNetCore.Core.Utilities.Results;
 using TracingNetCore.Entities.Concrete;
 
@@ -20,6 +25,12 @@ namespace TracingNetCore.Business.Concrete
             this.requestDal = requestDal;
         }
 
+        // [TransactionScopeAspect] // When you use it if your transactions not Commit your transactions is Rollback
+
+        // [CacheRemoveAspect("IDeviceService.Get")] if you add new device you must remove cache and re-loading cache for new device add cache 
+        // and if you want remove another business manager cache you will must change interface name in this manager code block
+
+        [ValidationAspect(typeof(DeviceValidator), Priority = 1)]
         public IResult Add(Device device)
         {
             deviceDal.Add(device);
@@ -38,6 +49,10 @@ namespace TracingNetCore.Business.Concrete
             return new SuccessResult(DataMessages.DeleteDevice);
         }
 
+
+        // [CacheAspect(duration:1)] if you want invoke caching any processes you must add this [CacheAspect] header processes
+        // and then you can set the duration in minutes.
+        [CacheAspect(duration: 1)]
         public IDataResult<Device> GetById(int deviceId)
         {
             return new SuccessDataResult<Device>(deviceDal.Get(x => x.Id == deviceId));
