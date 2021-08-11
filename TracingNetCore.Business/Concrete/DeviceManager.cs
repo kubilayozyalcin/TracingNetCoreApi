@@ -74,9 +74,9 @@ namespace TracingNetCore.Business.Concrete
             return new SuccessDataResult<List<Device>>(deviceDal.GetList().ToList());
         }
 
-        public IDataResult<List<Request>> GetRequests(int employeeId)
+        public IDataResult<List<Request>> GetRequests(int deviceId)
         {
-            return new SuccessDataResult<List<Request>>(requestDal.GetList(x => x.EmployeeId == employeeId).ToList());
+            return new SuccessDataResult<List<Request>>(requestDal.GetList(x => x.DeviceId == deviceId).ToList());
         }
     }
 }
