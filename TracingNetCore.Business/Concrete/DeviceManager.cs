@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using TacingNetCore.DataAccess.Abstractions;
 using TracingNetCore.Business.Abstractions;
+using TracingNetCore.Business.BusinessAspect.AutoFac;
 using TracingNetCore.Business.Constants;
 using TracingNetCore.Business.ValidationRules.FluentValidation;
 using TracingNetCore.Core.Aspects.AutoFac.Caching;
+using TracingNetCore.Core.Aspects.AutoFac.Performance;
 using TracingNetCore.Core.Aspects.AutoFac.Transaction;
 using TracingNetCore.Core.Aspects.AutoFac.Validation;
 using TracingNetCore.Core.CrossCuttingConcerns.Validation.FluentValidation;
@@ -27,8 +29,22 @@ namespace TracingNetCore.Business.Concrete
 
         // [TransactionScopeAspect] // When you use it if your transactions not Commit your transactions is Rollback
 
-        // [CacheRemoveAspect("IDeviceService.Get")] if you add new device you must remove cache and re-loading cache for new device add cache 
-        // and if you want remove another business manager cache you will must change interface name in this manager code block
+        // [CacheRemoveAspect("IDeviceService.Get")] if you add new device you must remove cache and re-loading cache for new
+        // device add cache and if you want remove another business manager cache you will must change interface name in this manager
+        // code block
+
+        // [CacheAspect(duration:1)] if you want invoke caching any processes you must add this [CacheAspect] header processes
+        // and then you can set the duration in minutes.
+
+        // [SecuredOperation("Device.List, Admin")] for authorization aspect cross cutting all project with claim roles and
+        // operation claims
+
+        // [PerformanceAspect(5)] check for performance duration if you want check define a time in seconds to test how
+        // long it takes to list
+
+        // [ValidationAspect(typeof(DeviceValidator), Priority = 1)] if you write validation you will add validation check for add, 
+        // edit field areas 
+
 
         [ValidationAspect(typeof(DeviceValidator), Priority = 1)]
         public IResult Add(Device device)
@@ -49,9 +65,8 @@ namespace TracingNetCore.Business.Concrete
             return new SuccessResult(DataMessages.DeleteDevice);
         }
 
-
-        // [CacheAspect(duration:1)] if you want invoke caching any processes you must add this [CacheAspect] header processes
-        // and then you can set the duration in minutes.
+        [PerformanceAspect(5)]
+        [SecuredOperation("Device.List, Admin")]
         [CacheAspect(duration: 1)]
         public IDataResult<Device> GetById(int deviceId)
         {

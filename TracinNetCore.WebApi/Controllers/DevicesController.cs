@@ -18,7 +18,7 @@ namespace TracinNetCore.WebApi.Controllers
 
         // Get All Devices
         [HttpGet("getall")]
-        [Authorize()]
+        //[Authorize()]
         public IActionResult GetList()
         {
            var result = deviceService.GetList();
