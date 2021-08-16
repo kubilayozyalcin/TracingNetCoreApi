@@ -40,6 +40,7 @@
         public static string UserAlreadyExists = "Bu Kullanıcı Zaten Sistemde Kayıtlı.";
         public static string UserRegistered = "Kullanıcı Başarıyla Kaydedildi.";
         public static string AccessTokenCreated = "Access Token Başarıyla Oluşturuldu.";
+        public static string AuthorizationDenied = "Yetkiniz Bulunmuyor.";
 
     }
 }

@@ -19,7 +19,7 @@ namespace TracingNetCore.Business.Concrete
         private IDeviceTypeDal deviceTypeDal;
         private IDeviceDal deviceDal;
 
-        public DeviceTypeManager(IDeviceTypeDal deviceTypeDal)
+        public DeviceTypeManager(IDeviceTypeDal deviceTypeDal, IDeviceDal deviceDal)
         {
             this.deviceTypeDal = deviceTypeDal;
             this.deviceDal = deviceDal;
