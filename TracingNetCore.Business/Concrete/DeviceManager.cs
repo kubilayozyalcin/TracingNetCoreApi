@@ -13,6 +13,7 @@ using TracingNetCore.Core.Aspects.AutoFac.Transaction;
 using TracingNetCore.Core.Aspects.AutoFac.Validation;
 using TracingNetCore.Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
 using TracingNetCore.Core.CrossCuttingConcerns.Validation.FluentValidation;
+using TracingNetCore.Core.Utilities.Business;
 using TracingNetCore.Core.Utilities.Results;
 using TracingNetCore.Entities.Concrete;
 
@@ -21,7 +22,10 @@ namespace TracingNetCore.Business.Concrete
     public class DeviceManager : IDeviceService
     {
         private IDeviceDal deviceDal;
+        // Dont use it (IRequestDal) if you want use other service you must add example; IRequestService and your processes must 
+        // added in services
         private IRequestDal requestDal;
+
 
         public DeviceManager(IDeviceDal deviceDal, IRequestDal requestDal)
         {
@@ -49,11 +53,25 @@ namespace TracingNetCore.Business.Concrete
 
         //[LogAspect(typeof(JsonFileLogger))] if you want get log you add this and select logger type DatabaseLogger or JsonFileLogger
 
+        // if you want add new result for check something you will add like this comma ( , ) and than write methoda name and
+        // parameters ---> Start Code """ IResult result = BusinessRules.Run(CheckIfDeviceIdentityExist(device.DeviceIdentity)
+        // , <!-- Check Something Method Name) """ End Code --!> For Example Add Check Add Method
+
+
         [ValidationAspect(typeof(DeviceValidator), Priority = 1)]
         public IResult Add(Device device)
-        {
+        {      
+            IResult result = BusinessRules.Run(CheckIfDeviceIdentityExist(device.DeviceIdentity));
             deviceDal.Add(device);
             return new SuccessResult(DataMessages.AddDevice);
+        }
+
+        // Check DeviceIdentity : If already exist return errorResult else return null
+        private IResult CheckIfDeviceIdentityExist(string deviceIdentity)
+        {
+            if (deviceDal.GetList(x => x.DeviceIdentity == deviceIdentity) != null)
+                return new ErrorResult(DataMessages.DeviceAlreadyExist);
+            return new SuccessResult();
         }
 
         public IResult Update(Device device)
@@ -67,11 +85,6 @@ namespace TracingNetCore.Business.Concrete
             deviceDal.Delete(device);
             return new SuccessResult(DataMessages.DeleteDevice);
         }
-
-        [PerformanceAspect(5)]
-        //[SecuredOperation("Device.List, Admin")]
-        [CacheAspect(duration: 1)] 
-        [LogAspect(typeof(JsonFileLogger))] 
 
         public IDataResult<Device> GetById(int deviceId)
         {

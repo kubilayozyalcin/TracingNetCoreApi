@@ -2,10 +2,14 @@
 {
     public static class DataMessages
     {
-        // For Devices
+        // For Devices Success
         public static string AddDevice = "Cihaz Başarıyla Eklendi.";
         public static string UpdateDevice = "Cihaz Başarıyla Güncellendi.";
         public static string DeleteDevice = "Cihaz Başarıyla Silindi.";
+
+        // For Device Error
+        public static string DeviceAlreadyExist = "Cihaz Zaten Sistemde Kayıtlı.";
+
 
         // For Requests
         public static string AddRequest = "İstek Başarıyla Eklendi.";
