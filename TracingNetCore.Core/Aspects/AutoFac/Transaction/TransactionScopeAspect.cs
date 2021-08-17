@@ -16,7 +16,7 @@ namespace TracingNetCore.Core.Aspects.AutoFac.Transaction
                     invocation.Proceed();
                     transactionScope.Complete();
                 }
-                catch (Exception)
+                catch (System.Exception)
                 {
                     transactionScope.Dispose();
                     throw;

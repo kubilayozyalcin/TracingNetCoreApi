@@ -9,7 +9,7 @@ namespace TracingNetCore.Core.Utilities.Interceptors.AutoFac
 
         protected virtual void OnAfter(IInvocation invocation) { }
 
-        protected virtual void OnException(IInvocation invocation) { }
+        protected virtual void OnException(IInvocation invocation, Exception e) { }
 
         protected virtual void OnSuccess(IInvocation invocation) { }
 
@@ -19,10 +19,10 @@ namespace TracingNetCore.Core.Utilities.Interceptors.AutoFac
             OnBeFor(invocation);
 
             try { invocation.Proceed(); }
-            catch (Exception)
+            catch (Exception e)
             {
                 isSuccess = false;
-                OnException(invocation);
+                OnException(invocation, e);
                 throw;
             }
             finally { if (isSuccess) OnSuccess(invocation); }

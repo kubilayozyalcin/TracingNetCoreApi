@@ -21,9 +21,7 @@ namespace TracingNetCore.Core.Utilities.Hashing
                 for (int i = 0; i < computedHash.Length; i++)
                 {
                     if (computedHash[i] != passwordHash[i])
-                    {
                         return false;
-                    }
                 }
             }
 
