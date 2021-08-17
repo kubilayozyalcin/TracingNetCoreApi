@@ -7,9 +7,11 @@ using TracingNetCore.Business.BusinessAspect.AutoFac;
 using TracingNetCore.Business.Constants;
 using TracingNetCore.Business.ValidationRules.FluentValidation;
 using TracingNetCore.Core.Aspects.AutoFac.Caching;
+using TracingNetCore.Core.Aspects.AutoFac.Logging;
 using TracingNetCore.Core.Aspects.AutoFac.Performance;
 using TracingNetCore.Core.Aspects.AutoFac.Transaction;
 using TracingNetCore.Core.Aspects.AutoFac.Validation;
+using TracingNetCore.Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
 using TracingNetCore.Core.CrossCuttingConcerns.Validation.FluentValidation;
 using TracingNetCore.Core.Utilities.Results;
 using TracingNetCore.Entities.Concrete;
@@ -45,6 +47,7 @@ namespace TracingNetCore.Business.Concrete
         // [ValidationAspect(typeof(DeviceValidator), Priority = 1)] if you write validation you will add validation check for add, 
         // edit field areas 
 
+        //[LogAspect(typeof(JsonFileLogger))] if you want get log you add this and select logger type DatabaseLogger or JsonFileLogger
 
         [ValidationAspect(typeof(DeviceValidator), Priority = 1)]
         public IResult Add(Device device)
@@ -66,8 +69,10 @@ namespace TracingNetCore.Business.Concrete
         }
 
         [PerformanceAspect(5)]
-        [SecuredOperation("Device.List, Admin")]
-        [CacheAspect(duration: 1)]
+        //[SecuredOperation("Device.List, Admin")]
+        [CacheAspect(duration: 1)] 
+        [LogAspect(typeof(JsonFileLogger))] 
+
         public IDataResult<Device> GetById(int deviceId)
         {
             return new SuccessDataResult<Device>(deviceDal.Get(x => x.Id == deviceId));
