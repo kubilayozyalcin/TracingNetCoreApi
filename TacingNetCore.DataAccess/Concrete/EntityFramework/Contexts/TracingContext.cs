@@ -18,11 +18,13 @@ namespace TacingNetCore.DataAccess.Concrete.EntityFramework.Contexts
         public DbSet<User> Users { get; set; }
         public DbSet<OperationClaim> OperationClaims { get; set; }
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
+        // Create Table Just For Logging
+        public DbSet<Log> Logs { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(connectionString: @"Server=Bigroup;Database=ApiXTracing;Trusted_Connection=True");
+            optionsBuilder.UseSqlServer(connectionString: @"Server=Bigroup;Database=ApiTracing;Trusted_Connection=True");
         }
 
     }
