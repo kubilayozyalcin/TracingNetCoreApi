@@ -16,7 +16,7 @@ namespace TracingNetCore.Business.Concrete
 
         public void Add(User user)
         {
-            userDal.Add(user);  
+            userDal.Add(user);
         }
 
         public User GetByEmail(string email)
@@ -26,7 +26,7 @@ namespace TracingNetCore.Business.Concrete
 
         public List<OperationClaim> GetClaims(User user)
         {
-            return userDal.GetClaims(user); 
+            return userDal.GetClaims(user);
         }
     }
 }

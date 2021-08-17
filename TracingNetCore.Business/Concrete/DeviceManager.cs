@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using TacingNetCore.DataAccess.Abstractions;
 using TracingNetCore.Business.Abstractions;
-using TracingNetCore.Business.BusinessAspect.AutoFac;
 using TracingNetCore.Business.Constants;
 using TracingNetCore.Business.ValidationRules.FluentValidation;
-using TracingNetCore.Core.Aspects.AutoFac.Caching;
-using TracingNetCore.Core.Aspects.AutoFac.Logging;
-using TracingNetCore.Core.Aspects.AutoFac.Performance;
-using TracingNetCore.Core.Aspects.AutoFac.Transaction;
 using TracingNetCore.Core.Aspects.AutoFac.Validation;
-using TracingNetCore.Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
-using TracingNetCore.Core.CrossCuttingConcerns.Validation.FluentValidation;
 using TracingNetCore.Core.Utilities.Business;
 using TracingNetCore.Core.Utilities.Results;
 using TracingNetCore.Entities.Concrete;
@@ -60,7 +52,7 @@ namespace TracingNetCore.Business.Concrete
 
         [ValidationAspect(typeof(DeviceValidator), Priority = 1)]
         public IResult Add(Device device)
-        {      
+        {
             IResult result = BusinessRules.Run(CheckIfDeviceIdentityExist(device.DeviceIdentity));
             deviceDal.Add(device);
             return new SuccessResult(DataMessages.AddDevice);

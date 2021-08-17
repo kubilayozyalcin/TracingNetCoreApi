@@ -47,10 +47,11 @@ namespace TracingNetCore.Business.DependencyResolvers.AutoFac
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()
-                .EnableInterfaceInterceptors(new ProxyGenerationOptions() { 
-                
-                Selector = new AspectInterceptorSelector()
-                
+                .EnableInterfaceInterceptors(new ProxyGenerationOptions()
+                {
+
+                    Selector = new AspectInterceptorSelector()
+
                 }).SingleInstance();
         }
     }

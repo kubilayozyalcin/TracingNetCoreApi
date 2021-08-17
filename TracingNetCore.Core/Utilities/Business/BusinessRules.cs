@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TracingNetCore.Core.Utilities.Results;
+﻿using TracingNetCore.Core.Utilities.Results;
 
 namespace TracingNetCore.Core.Utilities.Business
 {

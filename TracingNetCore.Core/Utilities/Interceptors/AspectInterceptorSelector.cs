@@ -20,7 +20,7 @@ namespace TracingNetCore.Core.Utilities.Interceptors
             // Catch Exception on Project (add all handller)
             classAttribute.Add(new ExceptionLogAspect(typeof(JsonFileLogger)));
 
-            return classAttribute.OrderBy(x =>x.Priority).ToArray();
+            return classAttribute.OrderBy(x => x.Priority).ToArray();
         }
     }
 }

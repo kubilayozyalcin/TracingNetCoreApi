@@ -14,7 +14,7 @@ namespace TracingNetCore.Core.CrossCuttingConcerns.Caching.Microsoft
 
         public MemoryCacheManager()
         {
-            _cache = ServiceTool.serviceProvider.GetService<IMemoryCache>();
+            _cache = ServiceTool.ServiceProvider.GetService<IMemoryCache>();
         }
 
         public T Get<T>(string key)

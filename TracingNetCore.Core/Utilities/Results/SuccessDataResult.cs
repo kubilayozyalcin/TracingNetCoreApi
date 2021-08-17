@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TracingNetCore.Core.Utilities.Results
+﻿namespace TracingNetCore.Core.Utilities.Results
 {
     public class SuccessDataResult<T> : DataResult<T>
     {
@@ -20,7 +14,7 @@ namespace TracingNetCore.Core.Utilities.Results
         {
         }
 
-        public SuccessDataResult() : base (default, true)
+        public SuccessDataResult() : base(default, true)
         {
         }
     }

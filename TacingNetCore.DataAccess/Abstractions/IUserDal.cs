@@ -6,6 +6,6 @@ namespace TacingNetCore.DataAccess.Abstractions
 {
     public interface IUserDal : IEntityRepository<User>
     {
-        List<OperationClaim> GetClaims(User user);  
+        List<OperationClaim> GetClaims(User user);
     }
 }

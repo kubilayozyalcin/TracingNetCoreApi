@@ -1,5 +1,4 @@
 ﻿using Castle.DynamicProxy;
-using System;
 using System.Transactions;
 using TracingNetCore.Core.Utilities.Interceptors.AutoFac;
 

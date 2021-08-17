@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using TracingNetCore.Core.Abstractions;
+﻿using TracingNetCore.Core.Abstractions;
 
 namespace TracingNetCore.Entities.Concrete
 {

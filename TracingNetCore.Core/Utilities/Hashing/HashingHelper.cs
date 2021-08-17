@@ -9,7 +9,7 @@ namespace TracingNetCore.Core.Utilities.Hashing
             using (var hmac = new System.Security.Cryptography.HMACSHA512())
             {
                 passwordSalt = hmac.Key;
-                passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password)); 
+                passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
             }
         }
 

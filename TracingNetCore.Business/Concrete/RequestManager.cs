@@ -37,7 +37,7 @@ namespace TracingNetCore.Business.Concrete
         public IDataResult<List<Request>> GetByEmployeeId(int employeeId)
         {
             return new SuccessDataResult<List<Request>>(requestDal.GetList(x => x.EmployeeId == employeeId).ToList());
-                
+
         }
 
         public IDataResult<List<Request>> GetByDeviceId(int deviceId)

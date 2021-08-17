@@ -18,7 +18,7 @@ namespace TracinNetCore.WebApi.Controllers
         [HttpGet("getall")]
         public IActionResult GetList()
         {
-           var result = employeeDeviceService.GetList();
+            var result = employeeDeviceService.GetList();
             if (result.Success)
                 return Ok(result.Data);
             return BadRequest(result.Message);

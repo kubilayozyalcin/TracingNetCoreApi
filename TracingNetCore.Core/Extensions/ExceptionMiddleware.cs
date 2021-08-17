@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Net;
 using System.Threading.Tasks;
-using FluentValidation;
 
 namespace TracingNetCore.Core.Extensions
 {

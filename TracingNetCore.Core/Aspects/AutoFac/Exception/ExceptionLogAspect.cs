@@ -1,9 +1,6 @@
 ﻿using Castle.DynamicProxy;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TracingNetCore.Core.CrossCuttingConcerns.Logging;
 using TracingNetCore.Core.CrossCuttingConcerns.Logging.Log4Net;
 using TracingNetCore.Core.Utilities.Interceptors.AutoFac;

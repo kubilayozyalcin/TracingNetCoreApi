@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using TacingNetCore.DataAccess.Abstractions;
 using TracingNetCore.Business.Abstractions;
 using TracingNetCore.Business.Constants;
-using TracingNetCore.Business.ValidationRules.FluentValidation;
-using TracingNetCore.Core.Aspects.AutoFac.Caching;
-using TracingNetCore.Core.Aspects.AutoFac.Transaction;
-using TracingNetCore.Core.Aspects.AutoFac.Validation;
-using TracingNetCore.Core.CrossCuttingConcerns.Validation.FluentValidation;
 using TracingNetCore.Core.Utilities.Results;
 using TracingNetCore.Entities.Concrete;
 
