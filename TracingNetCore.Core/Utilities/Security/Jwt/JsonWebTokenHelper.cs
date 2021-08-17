@@ -21,11 +21,12 @@ namespace TracingNetCore.Core.Utilities.Security.Jwt
         {
             Configuration = configuration;
             _tokenOptions = Configuration.GetSection(key: "TokenOption").Get<TokenOptions>();
-            _acessTokenExpiration = DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration);
         }
 
         public AccessToken CreateToken(User user, List<OperationClaim> operationClaims)
         {
+            _acessTokenExpiration = DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration);
+
             var securtyKey = SecurityKeyHelper.CreateSecurityKey(_tokenOptions.SecurityKey);
             var signinCredentials = SigningCredentialsHelper.CreateSigninCredentials(securtyKey);
 

@@ -1,9 +1,6 @@
 ﻿using Castle.DynamicProxy;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TracingNetCore.Core.CrossCuttingConcerns.Logging;
 using TracingNetCore.Core.CrossCuttingConcerns.Logging.Log4Net;
 using TracingNetCore.Core.Utilities.Interceptors.AutoFac;
@@ -30,6 +27,7 @@ namespace TracingNetCore.Core.Aspects.AutoFac.Logging
         private LogDetail GetLogDetail(IInvocation invocation)
         {
             var logParameters = new List<LogParameter>();
+
             for (int i = 0; i < invocation.Arguments.Length; i++)
             {
                 logParameters.Add(new LogParameter
@@ -45,7 +43,7 @@ namespace TracingNetCore.Core.Aspects.AutoFac.Logging
             var logDetail = new LogDetail
             {
                 MethodName = invocation.Method.Name,
-                logParameters = logParameters
+                LogParameters = logParameters
             };
 
             return logDetail;

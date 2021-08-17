@@ -1,5 +1,4 @@
 ﻿using log4net;
-using log4net.Config;
 using log4net.Repository;
 using System.IO;
 using System.Reflection;
@@ -18,7 +17,7 @@ namespace TracingNetCore.Core.CrossCuttingConcerns.Logging.Log4Net
             ILoggerRepository loggerRepository = LogManager.CreateRepository(Assembly.GetEntryAssembly(),
                 typeof(log4net.Repository.Hierarchy.Hierarchy));
             log4net.Config.XmlConfigurator.Configure(loggerRepository, xmlDocument["log4net"]);
-            
+
             _log = LogManager.GetLogger(loggerRepository.Name, name);
         }
 
@@ -30,8 +29,8 @@ namespace TracingNetCore.Core.CrossCuttingConcerns.Logging.Log4Net
 
         public void Info(object logMessage)
         {
-            if(IsInfoEnable)
-            _log.Info(logMessage);
+            if (IsInfoEnable)
+                _log.Info(logMessage);
         }
 
         public void Debug(object logMessage)
