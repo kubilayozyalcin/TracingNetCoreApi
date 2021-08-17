@@ -8,8 +8,9 @@ namespace TracingNetCore.Core.CrossCuttingConcerns.Logging.Log4Net.Loggers
 {
     public class JsonFileLogger : LoggerServiceBase
     {
-        public JsonFileLogger(string name) : base("JsonFileLogger")
+        public JsonFileLogger() : base("JsonFileLogger")
         {
+
         }
     }
 }
