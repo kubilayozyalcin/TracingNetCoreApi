@@ -39,9 +39,9 @@ namespace TracingNetCore.Business.Concrete
             {
                 Email = userForRegister.Email,
                 FirstName = userForRegister.FirstName,
-                LastName = userForRegister.FirstName,
+                LastName = userForRegister.LastName,
                 PasswordHash = passwordHash,
-                PasswordSalt = passwordHash,
+                PasswordSalt = passwordSalt,
                 IsStatus = true
             };
             _userService.Add(user);

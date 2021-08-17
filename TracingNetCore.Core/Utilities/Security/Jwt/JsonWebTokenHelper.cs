@@ -20,7 +20,7 @@ namespace TracingNetCore.Core.Utilities.Security.Jwt
         public JsonWebTokenHelper(IConfiguration configuration)
         {
             Configuration = configuration;
-            _tokenOptions = Configuration.GetSection(key: "TokenOption").Get<TokenOptions>();
+            _tokenOptions = Configuration.GetSection("TokenOption").Get<TokenOptions>();
         }
 
         public AccessToken CreateToken(User user, List<OperationClaim> operationClaims)
@@ -58,13 +58,13 @@ namespace TracingNetCore.Core.Utilities.Security.Jwt
             return jwt;
         }
 
-        private IEnumerable<Claim> SetClaims(User user, List<OperationClaim> operatingClaims)
+        private IEnumerable<Claim> SetClaims(User user, List<OperationClaim> operationClaims)
         {
             var claims = new List<Claim>();
             claims.AddNameIdentiFier(user.Id.ToString());
             claims.AddEmail(user.Email);
             claims.AddName($"{user.FirstName} {user.LastName}");
-            claims.AddRoles(operatingClaims.Select(c => c.Name).ToArray());
+            claims.AddRoles(operationClaims.Select(c => c.Name).ToArray());
             return claims;
         }
     }
