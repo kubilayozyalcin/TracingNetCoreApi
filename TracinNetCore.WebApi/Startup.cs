@@ -32,7 +32,7 @@ namespace TracinNetCore.WebApi
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowOrigin",
-                    builder => builder.WithOrigins("http://localhost:3000"));
+                    builder => builder.WithOrigins("http://localhost:44385"));
 
 
             });
@@ -81,7 +81,7 @@ namespace TracinNetCore.WebApi
             app.ConfigureCustomException();
 
             // Cors For Localhost Allow Any Header
-            app.UseCors(builder => builder.WithOrigins("http://localhost:3000").AllowAnyHeader());
+            app.UseCors(builder => builder.WithOrigins("http://localhost:44385").AllowAnyHeader());
 
             app.UseHttpsRedirection();
 
