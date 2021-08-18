@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Castle.DynamicProxy;
+﻿using Castle.DynamicProxy;
 using Microsoft.Extensions.DependencyInjection;
 using TracingNetCore.Core.CrossCuttingConcerns.Caching;
 using TracingNetCore.Core.Utilities.Interceptors.AutoFac;
@@ -19,7 +14,7 @@ namespace TracingNetCore.Core.Aspects.AutoFac.Caching
         public CacheRemoveAspect(string pattern)
         {
             _pattern = pattern;
-            _cacheManager = ServiceTool.serviceProvider.GetService<ICacheManager>();    
+            _cacheManager = ServiceTool.ServiceProvider.GetService<ICacheManager>();
         }
 
         protected override void OnSuccess(IInvocation invocation)

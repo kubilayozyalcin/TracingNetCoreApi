@@ -16,7 +16,7 @@ namespace TracinNetCore.WebApi
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
             .UseServiceProviderFactory(new AutofacServiceProviderFactory())
-            .ConfigureContainer<ContainerBuilder>(builder => 
+            .ConfigureContainer<ContainerBuilder>(builder =>
             {
                 builder.RegisterModule(new AutoFacBusinessModule());
             })

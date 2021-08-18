@@ -16,7 +16,7 @@ namespace TracingNetCore.Business.BusinessAspect.AutoFac
         public SecuredOperation(string roles)
         {
             _roles = roles.Split(',');
-            _httpContextAccessor = ServiceTool.serviceProvider.GetService<IHttpContextAccessor>();
+            _httpContextAccessor = ServiceTool.ServiceProvider.GetService<IHttpContextAccessor>();
 
         }
         protected override void OnBeFor(IInvocation invocation)
@@ -25,7 +25,7 @@ namespace TracingNetCore.Business.BusinessAspect.AutoFac
             foreach (var role in _roles)
             {
                 if (roleClaims.Contains(role))
-                    return;                
+                    return;
             }
             throw new Exception(DataMessages.AuthorizationDenied);
         }

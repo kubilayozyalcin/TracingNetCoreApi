@@ -18,7 +18,7 @@ namespace TracingNetCore.Business.Concrete
         }
 
         public IResult Add(EmployeeDevice employeeDevice)
-        { 
+        {
             employeeDeviceDal.Add(employeeDevice);
             return new SuccessResult(DataMessages.AddEmployeeDevice);
         }

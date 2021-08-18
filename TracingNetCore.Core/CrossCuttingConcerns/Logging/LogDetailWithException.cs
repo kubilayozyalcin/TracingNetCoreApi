@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TracingNetCore.Core.CrossCuttingConcerns.Logging
+﻿namespace TracingNetCore.Core.CrossCuttingConcerns.Logging
 {
     public class LogDetailWithException : LogDetail
     {

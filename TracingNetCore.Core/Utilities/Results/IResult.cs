@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TracingNetCore.Core.Utilities.Results
+﻿namespace TracingNetCore.Core.Utilities.Results
 {
     public interface IResult
     {
         bool Success { get; }
         string Message { get; }
 
-       
+
     }
 }

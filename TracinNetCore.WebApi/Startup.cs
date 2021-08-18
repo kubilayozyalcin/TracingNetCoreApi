@@ -1,17 +1,10 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using TracingNetCore.Core.DependencyResolvers;
 using TracingNetCore.Core.Extensions;
 using TracingNetCore.Core.Utilities.IoC;
@@ -39,7 +32,7 @@ namespace TracinNetCore.WebApi
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowOrigin",
-                    builder => builder.WithOrigins("http://localhost:3000"));
+                    builder => builder.WithOrigins("http://localhost:44385"));
 
 
             });
@@ -47,7 +40,8 @@ namespace TracinNetCore.WebApi
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options => {
+                .AddJwtBearer(options =>
+                {
 
                     options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
                     {
@@ -61,10 +55,10 @@ namespace TracinNetCore.WebApi
                     };
                 });
 
-            services.AddDependencyResolvers(new ICoreModule[] { 
-            
+            services.AddDependencyResolvers(new ICoreModule[] {
+
                 new CoreModule(),
-            
+
             });
 
             services.AddSwaggerGen(c =>
@@ -87,7 +81,7 @@ namespace TracinNetCore.WebApi
             app.ConfigureCustomException();
 
             // Cors For Localhost Allow Any Header
-            app.UseCors(builder => builder.WithOrigins("http://localhost:3000").AllowAnyHeader());
+            app.UseCors(builder => builder.WithOrigins("http://localhost:44385").AllowAnyHeader());
 
             app.UseHttpsRedirection();
 
@@ -96,7 +90,7 @@ namespace TracinNetCore.WebApi
             //Add Auth
             app.UseAuthentication();
 
-            app.UseAuthorization();         
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

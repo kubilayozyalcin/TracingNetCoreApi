@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TracingNetCore.Business.Abstractions;
+﻿using TracingNetCore.Business.Abstractions;
 using TracingNetCore.Business.Constants;
 using TracingNetCore.Core.Concrete;
 using TracingNetCore.Core.Utilities.Hashing;
@@ -45,7 +40,7 @@ namespace TracingNetCore.Business.Concrete
                 IsStatus = true
             };
             _userService.Add(user);
-            return new SuccessDataResult<User>(DataMessages.UserRegistered);   
+            return new SuccessDataResult<User>(DataMessages.UserRegistered);
         }
 
         public IDataResult<User> Login(UserForLoginDto userForLogin)
@@ -55,7 +50,7 @@ namespace TracingNetCore.Business.Concrete
             if (!HashingHelper.VerifyPasswordHash(userForLogin.Password, userToCheck.PasswordHash, userToCheck.PasswordSalt))
                 return new ErrorDataResult<User>(DataMessages.PasswordError);
 
-            return new SuccessDataResult<User>(DataMessages.SuccessfulLogin);  
+            return new SuccessDataResult<User>(DataMessages.SuccessfulLogin);
         }
 
         public IResult UserExists(string email)

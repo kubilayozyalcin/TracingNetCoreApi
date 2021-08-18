@@ -3,7 +3,7 @@ using TracingNetCore.Entities.Concrete;
 
 namespace TacingNetCore.DataAccess.Abstractions
 {
-    public interface IEmployeeDeviceDal : IEntityRepository<EmployeeDevice> 
+    public interface IEmployeeDeviceDal : IEntityRepository<EmployeeDevice>
     {
 
     }

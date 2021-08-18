@@ -13,6 +13,6 @@ namespace TracingNetCore.Business.Abstractions
         IResult Add(Employee employee);
         IResult Update(Employee employee);
         IResult Delete(Employee employee);
-      
+
     }
 }

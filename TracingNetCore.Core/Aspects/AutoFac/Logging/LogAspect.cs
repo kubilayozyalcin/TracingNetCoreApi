@@ -38,7 +38,7 @@ namespace TracingNetCore.Core.Aspects.AutoFac.Logging
 
                 });
             }
-            
+
 
             var logDetail = new LogDetail
             {
