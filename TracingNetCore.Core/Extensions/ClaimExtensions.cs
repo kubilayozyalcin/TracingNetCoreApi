@@ -17,9 +17,9 @@ namespace TracingNetCore.Core.Extensions
             claims.Add(new Claim(ClaimTypes.Name, name));
         }
 
-        public static void AddNameIdentiFier(this ICollection<Claim> claims, string nameIdentiFier)
+        public static void AddNameIdentifier(this ICollection<Claim> claims, string nameIdentifier)
         {
-            claims.Add(new Claim(ClaimTypes.NameIdentifier, nameIdentiFier));
+            claims.Add(new Claim(ClaimTypes.NameIdentifier, nameIdentifier));
         }
 
         public static void AddRoles(this ICollection<Claim> claims, string[] roles)

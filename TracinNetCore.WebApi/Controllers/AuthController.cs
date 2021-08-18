@@ -16,7 +16,7 @@ namespace TracinNetCore.WebApi.Controllers
         }
 
         [HttpPost("login")]
-        public IActionResult Login(UserForLoginDto userForLoginDto)
+        public ActionResult Login(UserForLoginDto userForLoginDto)
         {
             var userToLogin = _authService.Login(userForLoginDto);
             if (!userToLogin.Success) return BadRequest(userToLogin.Message);
@@ -27,7 +27,7 @@ namespace TracinNetCore.WebApi.Controllers
         }
 
         [HttpPost("register")]
-        public IActionResult Register(UserForRegisterDto userForRegisterDto)
+        public ActionResult Register(UserForRegisterDto userForRegisterDto)
         {
             var userExists = _authService.UserExists(userForRegisterDto.Email);
             if (!userExists.Success) return BadRequest(userExists.Message);

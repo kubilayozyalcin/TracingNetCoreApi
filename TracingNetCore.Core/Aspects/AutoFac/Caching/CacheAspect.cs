@@ -20,9 +20,9 @@ namespace TracingNetCore.Core.Aspects.AutoFac.Caching
 
         public override void Intercept(IInvocation invocation)
         {
-            var medthodName = string.Format($"{ invocation.Method.ReflectedType.FullName}.{invocation.Method.Name}");
+            var methodName = string.Format($"{ invocation.Method.ReflectedType.FullName}.{invocation.Method.Name}");
             var arguments = invocation.Arguments.ToList();
-            var key = $"{medthodName}({string.Join(",", arguments.Select(s => s?.ToString() ?? "<Null>"))})";
+            var key = $"{methodName}({string.Join(",", arguments.Select(x => x?.ToString() ?? "<Null>"))})";
             if (_cacheManager.IsAdd(key))
             {
                 invocation.ReturnValue = _cacheManager.Get(key);

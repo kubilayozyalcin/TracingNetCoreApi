@@ -6,6 +6,10 @@ namespace TacingNetCore.DataAccess.Concrete.EntityFramework.Contexts
 {
     public class TracingContext : DbContext
     {
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(@"Server=Bigroup;Database=ApiTracing;Trusted_Connection=True");
+        }
 
         // Tables Map
         public DbSet<Device> Devices { get; set; }
@@ -20,12 +24,6 @@ namespace TacingNetCore.DataAccess.Concrete.EntityFramework.Contexts
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
         // Create Table Just For Logging
         public DbSet<Log> Logs { get; set; }
-
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(connectionString: @"Server=Bigroup;Database=ApiTracing;Trusted_Connection=True");
-        }
 
     }
 }
