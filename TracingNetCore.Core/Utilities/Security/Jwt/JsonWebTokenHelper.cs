@@ -20,7 +20,7 @@ namespace TracingNetCore.Core.Utilities.Security.Jwt
         public JsonWebTokenHelper(IConfiguration configuration)
         {
             Configuration = configuration;
-            _tokenOptions = Configuration.GetSection("TokenOption").Get<TokenOptions>();
+            _tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
         }
 
         public AccessToken CreateToken(User user, List<OperationClaim> operationClaims)

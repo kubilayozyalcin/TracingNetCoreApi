@@ -2,6 +2,7 @@
 using System.Linq;
 using TacingNetCore.DataAccess.Abstractions;
 using TracingNetCore.Business.Abstractions;
+using TracingNetCore.Business.BusinessAspect.AutoFac;
 using TracingNetCore.Business.Constants;
 using TracingNetCore.Business.ValidationRules.FluentValidation;
 using TracingNetCore.Core.Aspects.AutoFac.Validation;
@@ -94,6 +95,7 @@ namespace TracingNetCore.Business.Concrete
             return new SuccessDataResult<List<Device>>(deviceDal.GetList(x => x.DeviceTypeId == typeId).ToList());
         }
 
+        [SecuredOperation("Admin")]
         public IDataResult<List<Device>> GetList()
         {
             return new SuccessDataResult<List<Device>>(deviceDal.GetList().ToList());
