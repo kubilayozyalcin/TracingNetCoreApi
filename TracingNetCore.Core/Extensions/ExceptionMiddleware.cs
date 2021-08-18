@@ -40,7 +40,7 @@ namespace TracingNetCore.Core.Extensions
             return httpContext.Response.WriteAsync(new ErrorDetails
             {
                 StatusCode = httpContext.Response.StatusCode,
-                Message = message,
+                Message = message
             }.ToString());
         }
     }

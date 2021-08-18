@@ -23,7 +23,7 @@ namespace TracingNetCore.Business.Concrete
         {
             var claims = _userService.GetClaims(user);
             var accessToken = _tokenHelper.CreateToken(user, claims);
-            return new SuccessDataResult<AccessToken>(DataMessages.AccessTokenCreated);
+            return new SuccessDataResult<AccessToken>(accessToken, DataMessages.AccessTokenCreated);
         }
 
         public IDataResult<User> Register(UserForRegisterDto userForRegister, string password)
@@ -40,7 +40,7 @@ namespace TracingNetCore.Business.Concrete
                 IsStatus = true
             };
             _userService.Add(user);
-            return new SuccessDataResult<User>(DataMessages.UserRegistered);
+            return new SuccessDataResult<User>(user, DataMessages.UserRegistered);
         }
 
         public IDataResult<User> Login(UserForLoginDto userForLogin)
@@ -50,7 +50,7 @@ namespace TracingNetCore.Business.Concrete
             if (!HashingHelper.VerifyPasswordHash(userForLogin.Password, userToCheck.PasswordHash, userToCheck.PasswordSalt))
                 return new ErrorDataResult<User>(DataMessages.PasswordError);
 
-            return new SuccessDataResult<User>(DataMessages.SuccessfulLogin);
+            return new SuccessDataResult<User>(userToCheck, DataMessages.SuccessfulLogin);
         }
 
         public IResult UserExists(string email)

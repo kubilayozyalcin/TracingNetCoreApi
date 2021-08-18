@@ -25,9 +25,9 @@ namespace TracingNetCore.Core.Aspects.AutoFac.Performance
         protected override void OnAfter(IInvocation invocation)
         {
             if (_stopWatch.Elapsed.TotalSeconds > _interval)
-            {
-                Debug.WriteLine($"Performance : {invocation.Method.Name} -- > {_stopWatch.Elapsed.TotalSeconds}");
-            }
+                Debug.WriteLine($"Performance : {invocation.Method.DeclaringType.FullName}" +
+                    $".{invocation.Method.Name} --> {_stopWatch.Elapsed.TotalSeconds}");
+
             _stopWatch.Reset();
         }
     }

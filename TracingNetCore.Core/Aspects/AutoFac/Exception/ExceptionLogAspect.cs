@@ -43,7 +43,7 @@ namespace TracingNetCore.Core.Aspects.AutoFac.Exception
 
             var logDetailWithException = new LogDetailWithException
             {
-                MethodName = invocation.GetConcreteMethod().Name,
+                MethodName = invocation.Method.Name,
                 LogParameters = logParameters
             };
 

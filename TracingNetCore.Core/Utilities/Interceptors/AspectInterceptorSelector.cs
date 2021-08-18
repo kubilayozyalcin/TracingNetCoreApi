@@ -19,6 +19,7 @@ namespace TracingNetCore.Core.Utilities.Interceptors
 
             // Log Exception on Project (add all handller)
            classAttribute.Add(new ExceptionLogAspect(typeof(DatabaseLogger)));
+           classAttribute.Add(new ExceptionLogAspect(typeof(JsonFileLogger)));
 
             return classAttribute.OrderBy(x => x.Priority).ToArray();
         }

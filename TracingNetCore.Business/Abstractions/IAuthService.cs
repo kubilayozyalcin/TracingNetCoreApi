@@ -14,5 +14,6 @@ namespace TracingNetCore.Business.Abstractions
         IResult UserExists(string email);
 
         IDataResult<AccessToken> CreateAccessToken(User user);
+
     }
 }
