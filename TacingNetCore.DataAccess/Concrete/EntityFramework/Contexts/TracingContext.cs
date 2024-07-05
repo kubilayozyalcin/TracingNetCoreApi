@@ -8,7 +8,7 @@ namespace TacingNetCore.DataAccess.Concrete.EntityFramework.Contexts
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=Bigroup;Database=ApiTracing;Trusted_Connection=True");
+            optionsBuilder.UseSqlServer(@"Server=127.0.0.1;Database=ApiTracing;Trusted_Connection=True");
         }
 
         // Tables Map
